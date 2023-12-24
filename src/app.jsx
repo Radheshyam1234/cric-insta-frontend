@@ -1,8 +1,7 @@
-import React,{Suspense} from 'react'
-import { Route,Routes } from 'react-router-dom'
+import React, { Suspense } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import loadable from '@loadable/component'
 import TopBarProgress from 'react-topbar-progress-indicator'
-
 
 // Lazy Loading Components
 const Login = loadable(() => import('routes/login/login'), {

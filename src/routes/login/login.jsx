@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react'
 import loadable from '@loadable/component'
 
-const LoginForm = loadable(() => import('views/login-form/login-form'))
+const LoginForm = loadable(() => import('../../views/login-form/login-form'))
 
- const Login=()=>{
- return(
+const Login = () => {
+  return (
     <>
-   <LoginForm/>
+      <LoginForm />
     </>
- )
+  )
 }
 export default Login
