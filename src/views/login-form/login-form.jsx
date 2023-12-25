@@ -6,12 +6,12 @@ const LoginForm = () => {
   return (
     <div className='p-5 lg:p-8 bg-primary-500 rounded-[2px] flex flex-col gap-4 w-[340px] sm:w-[440px]'>
       <p className='text-center font-bold text-white text-lg'>Social media for cricket fans </p>
-      <div className='space-y-6'>
-        <TextInput containerClassName='space-y-1.5' label='Email Address' placeHolder='Enter your email address' />
+      <div className='space-y-6 '>
+        <TextInput containerClassName='space-y-1.5 ' label='Email Address' placeHolder='Enter your email address' />
         <PasswordInput containerClassName='space-y-1.5' label='Password' />
       </div>
       <div className='mt-6 space-y-4 w-full'>
-        <Button as='button' type='primary' className='w-full font-semibold tracking-widest font-medium py-2.5 px-[18px] '>
+        <Button as='button' type='primary' className='w-full font-semibold tracking-widest  py-2.5 px-[18px] '>
           LOGIN
         </Button>
       </div>
