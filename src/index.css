@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
 
 h1 {
   @apply text-2xl font-bold;
@@ -13,4 +14,9 @@ h3 {
 }
 h4 {
   @apply text-base font-bold;
+}
+
+body {
+  font-family: 'Mulish';
+  font-feature-settings: 'liga', 'kern';
 }
