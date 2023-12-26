@@ -9,6 +9,7 @@ const TextInput = ({ label, labelClassName, containerClassName, inputClassName, 
           placeholder={placeHolder}
           required={required}
           disabled={disabled}
+          onChange={onChange}
         />
       </div>
     </div>

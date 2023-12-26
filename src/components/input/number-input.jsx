@@ -1,10 +1,10 @@
-const PasswordInput = ({ label, labelClassName, containerClassName, inputClassName, inputContainerClassName, required, disabled, placeHolder, onChange }) => {
+const NumberInput = ({ label, labelClassName, containerClassName, inputClassName, inputContainerClassName, required, disabled, placeHolder, onChange }) => {
   return (
     <div className={`${containerClassName}`}>
       <label className={` text-gray-200 text-sm ${labelClassName}`}>{label}</label>
       <div className={`${inputContainerClassName}`}>
         <input
-          type='password'
+          type='number'
           className={`px-5 h-11 w-full outline-none border-none  bg-[#393f5c] text-[#FFF] rounded-[2px] ${inputClassName} `}
           placeholder={placeHolder}
           required={required}
@@ -16,4 +16,4 @@ const PasswordInput = ({ label, labelClassName, containerClassName, inputClassNa
   )
 }
 
-export default PasswordInput
+export default NumberInput
