@@ -1,8 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{html,js,jsx}'],
+  mode: 'jit',
+  content: ['./public/**/*.html', './src/**/*.{js,jsx,ts,tsx,vue}'],
   theme: {
     extend: {
+      screens: {
+        xxs: '370px',
+        xs: '450px',
+        sm: '640px',
+        md: '768px',
+        lg: '1024px',
+        xl: '1280px',
+        xxl: '1360px',
+        '2xl': '1440px',
+        '3xl': '1536px',
+      },
       colors: {
         white: '#FFFFFF',
         slate: '#F4F4F4',
@@ -186,19 +198,16 @@ module.exports = {
         'primary-900': '#15192e',
         'primary-1000': '#121526',
       },
-      // backgroundImage: {
-      //   'login-screen-right-side-image': "url('/src/assets/images/Login-Screen/right-side.png')",
-      // },
       boxShadow: {
         xs: '0px 1px 2px rgba(16, 24, 40, 0.05)',
         testimonial: '0px 0px 64px 0px rgba(52, 64, 84, 0.08)',
         'ai-button': '0px 0px 0px 1.5px #422A89',
         'pending-answer-category': '0px 0px 0px 2.5px rgba(0, 41, 245, 0.10), 0px 1px 2px 0px rgba(16, 24, 40, 0.05)',
       },
-      fontFamily: {
-        inter: ['Inter'],
-        caveat: ['Caveat'],
-      },
+      // fontFamily: {
+      //   inter: ['Inter'],
+      //   caveat: ['Caveat'],
+      // },
       fontSize: {
         xs: ['0.75rem', { lineHeight: '1.125rem' }],
         sm: ['0.875rem', { lineHeight: '1.25rem' }],
