@@ -1,11 +1,11 @@
 import SpinLoader from 'components/loader/spin-loader'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import React from 'react'
 
-const Button = ({ children, as, to, type, className, onButtonClick, onLinkClick, loading, disabled, style }) => {
-  if (as === 'link' && to)
+const Button = ({ children, as, href, type, className, onButtonClick, onLinkClick, loading, disabled, style }) => {
+  if (as === 'link' && href)
     return (
-      <Link to={to} className={className} onClick={onLinkClick}>
+      <Link href={href} className={className} onClick={onLinkClick}>
         {children}
       </Link>
     )
