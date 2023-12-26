@@ -12,7 +12,13 @@ const Button = ({ children, as, href, type, className, onButtonClick, onLinkClic
   if (as === 'button')
     return (
       <button
-        className={`${type === 'primary' ? 'bg-[#5a99e8] text-[#FFF] rounded-[4px]' : type === 'secondary' ? 'bg-[#393f5c] text-[#FFF] rounded-[4px]' : ''} ${className}`}
+        className={`${
+          type === 'primary'
+            ? 'bg-[#5a99e8] hover:bg-[#5189D0] transition-all delay-100 text-[#FFF] rounded-[4px]'
+            : type === 'secondary'
+            ? 'bg-[#393f5c] hover:bg-[#4C526C] transition-all delay-100 text-[#FFF] rounded-[4px]'
+            : ''
+        } ${disabled ? 'opacity-70 cursor-not-allowed' : ''} ${className}`}
         onClick={onButtonClick}
         disabled={disabled}
         style={style}
