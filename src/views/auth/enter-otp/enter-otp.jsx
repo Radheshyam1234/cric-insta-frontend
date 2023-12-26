@@ -1,18 +1,9 @@
 import Button from 'components/button/button'
-import useCountdownTimer from 'hooks/use-countdown-timer'
-import { useEffect, useState } from 'react'
 import ReactOtpInput from 'react-otp-input'
+import UseOtpVerification from 'views/hooks/use-otp-verification'
 
 const EnterOtp = () => {
-  const [otp, setOtp] = useState()
-  const [disableResend, setDisableResend] = useState(true)
-
-  const { remainingTime } = useCountdownTimer({
-    initialTime: 30,
-    onTimerEnd: () => {
-      setDisableResend(false)
-    },
-  })
+  const { otp, handleSetOtp, handleVerifyOtp, disableResend, remainingTime } = UseOtpVerification()
 
   return (
     <div className='p-5 lg:p-8 bg-primary-500 rounded-[2px] flex flex-col gap-4 w-[340px] sm:w-[440px]'>
@@ -21,9 +12,7 @@ const EnterOtp = () => {
       <ReactOtpInput
         value={otp}
         numInputs={6}
-        onChange={(e) => {
-          setOtp(e)
-        }}
+        onChange={handleSetOtp}
         inputType={'number'}
         focusStyle='z-10 !outline-none !border-none'
         shouldAutoFocus={true}
@@ -33,7 +22,7 @@ const EnterOtp = () => {
         inputStyle={`!h-11 !w-12 !border-none !outline-none !text-primary-900  font-semibold !text-xl !rounded-sm`}
         renderInput={(props) => <input {...props} />}
       />
-      <Button as='button' type='primary' className='w-full font-semibold tracking-widest  py-2.5 px-[18px] ' disabled={false}>
+      <Button as='button' type='primary' className='w-full font-semibold tracking-widest  py-2.5 px-[18px] ' disabled={String(otp)?.length === 6 ? false : true}>
         Verify OTP
       </Button>
       <div className='flex justify-between items-center'>
