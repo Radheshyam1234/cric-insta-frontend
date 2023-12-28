@@ -16,7 +16,9 @@ const UseLoginForm = () => {
   const handlePasswordChange = (e) => {
     setPassword(e?.target?.value)
   }
-
+  const handleErrorState = (type, message) => {
+    setErrorState((prev) => ({ ...prev, [type]: message }))
+  }
   const verifyLoginCredential = () => {
     let isValid = true
     setErrorState({
@@ -25,11 +27,11 @@ const UseLoginForm = () => {
     })
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (password?.length === 0) {
-      setErrorState((prev) => ({ ...prev, password: 'Please enter password' }))
+      handleErrorState('password', 'Please enter password')
       isValid = false
     }
     if (!emailPattern.test(email)) {
-      setErrorState((prev) => ({ ...prev, email: 'Please enter valid email' }))
+      handleErrorState('email', 'Please enter valid email')
       isValid = false
     }
     return isValid
@@ -37,7 +39,6 @@ const UseLoginForm = () => {
 
   const handleLoginClick = () => {
     if (verifyLoginCredential()) {
-      console.log(email.password)
       setShowotpScreen(true)
     }
   }

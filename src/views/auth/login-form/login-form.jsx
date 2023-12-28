@@ -23,6 +23,9 @@ const LoginForm = () => {
             <div className='space-y-1'>
               <PasswordInput containerClassName='space-y-1.5' label='Password' onChange={handlePasswordChange} />
               {errorState?.password && <p className='text-red-500 text-xs'>{errorState?.password}</p>}
+              <Button as='link' href='/auth/forgot-password' className='inline-block cursor-pointer float-right font-semibold text-sm text-gray-300 hover:text-gray-100'>
+                Forgot Password ?
+              </Button>
             </div>
           </div>
           <div className='mt-6 space-y-4 w-full'>
