@@ -2,8 +2,8 @@ import Button from 'components/button/button'
 import ReactOtpInput from 'react-otp-input'
 import UseOtpVerification from 'views/hooks/use-otp-verification'
 
-const EnterOtp = () => {
-  const { otp, handleSetOtp, handleVerifyOtp, disableResend, remainingTime } = UseOtpVerification()
+const EnterOtp = ({ requestType, signUpInfo }) => {
+  const { otp, loading, handleSetOtp, handleVerifyOtp, disableResend, remainingTime } = UseOtpVerification({ requestType, signUpInfo })
 
   return (
     <div className='p-5 lg:p-8 bg-primary-500 rounded-[2px] flex flex-col gap-4 w-[340px] sm:w-[440px]'>
@@ -22,7 +22,14 @@ const EnterOtp = () => {
         inputStyle={`!h-11 !w-12 !border-none !outline-none !text-primary-900  font-semibold !text-xl !rounded-sm`}
         renderInput={(props) => <input {...props} />}
       />
-      <Button as='button' type='primary' className='w-full font-semibold tracking-widest  py-2.5 px-[18px] ' disabled={String(otp)?.length === 6 ? false : true}>
+      <Button
+        as='button'
+        type='primary'
+        className='w-full font-semibold tracking-widest  py-2.5 px-[18px] '
+        disabled={(String(otp)?.length === 6 ? false : true) || loading}
+        onButtonClick={handleVerifyOtp}
+        loading={loading}
+      >
         Verify OTP
       </Button>
       <div className='flex justify-between items-center'>

@@ -18,7 +18,7 @@ const Button = ({ children, as, href, type, className, onButtonClick, onLinkClic
             : type === 'secondary'
             ? 'bg-[#393f5c] hover:bg-[#4C526C] transition-all delay-100 text-[#FFF] rounded-[4px]'
             : ''
-        } ${disabled ? 'opacity-60 cursor-not-allowed' : ''} ${className}`}
+        } ${disabled ? 'opacity-60 cursor-not-allowed' : ''} h-11 flex justify-center items-center ${className}`}
         onClick={onButtonClick}
         disabled={disabled}
         style={style}
