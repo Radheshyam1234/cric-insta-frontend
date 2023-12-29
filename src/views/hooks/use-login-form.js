@@ -1,9 +1,12 @@
+import { handleApiPost } from 'api/Axios'
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 
 const UseLoginForm = () => {
-  const [showOtpScreen, setShowotpScreen] = useState(false)
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
   const [errorState, setErrorState] = useState({
     email: '',
     password: '',
@@ -37,14 +40,23 @@ const UseLoginForm = () => {
     return isValid
   }
 
-  const handleLoginClick = () => {
+  const handleLoginClick = async () => {
     if (verifyLoginCredential()) {
-      setShowotpScreen(true)
+      setLoading(true)
+      try {
+        const res = await handleApiPost('/auth/login', { email, password })
+        console.log(res, 'use-login-form')
+        router.push('/')
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setLoading(false)
+      }
     }
   }
 
   return {
-    showOtpScreen,
+    loading,
     handleEmailChange,
     handlePasswordChange,
     handleLoginClick,

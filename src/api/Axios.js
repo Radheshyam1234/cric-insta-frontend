@@ -39,30 +39,32 @@ const handleApiGet = async (url, requestParams) => {
 }
 
 const handleApiPost = async (url, requestData, requestParams) => {
-  try {
-    const resp = await axiosInstance({
-      method: 'POST',
-      url,
-      headers: {
-        Authorization: await authHeader(),
-      },
-      data: requestData,
-      params: requestParams,
-    })
-    const data = {
-      status: resp.status,
-      data: resp.data,
+  return new Promise(async (resolve, reject) => {
+    try {
+      const resp = await axiosInstance({
+        method: 'POST',
+        url,
+        headers: {
+          Authorization: await authHeader(),
+        },
+        data: requestData,
+        params: requestParams,
+      })
+      const data = {
+        status: resp?.status,
+        data: resp?.data?.response,
+      }
+      if ([200, 201].includes(data.status)) return resolve(data)
+      throw new Error(resp)
+    } catch (error) {
+      const errorData = {
+        status: error?.response?.status,
+        errorMessage: error?.response?.data?.errorText,
+      }
+      console.log(errorData, 'error in post')
+      reject(errorData)
     }
-    if ([200, 201].includes(data.status)) return data
-    throw new Error(resp)
-  } catch (error) {
-    const errorData = {
-      status: error?.response?.status,
-      errorMessage: error?.response?.data?.errorText,
-    }
-    console.log(errorData, 'error in post')
-    throw new Error(JSON.stringify(errorData))
-  }
+  })
 }
 
 export { handleApiGet, handleApiPost }
