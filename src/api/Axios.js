@@ -27,6 +27,7 @@ const handleApiGet = async (url, requestParams) => {
       status: resp.status,
       data: resp.data,
     }
+    console.log(resp, 'GET resp from Axios.js')
     if ([200, 201].includes(data.status)) return data
     throw new Error(resp)
   } catch (error) {
@@ -52,8 +53,9 @@ const handleApiPost = async (url, requestData, requestParams) => {
       })
       const data = {
         status: resp?.status,
-        data: resp?.data?.response,
+        data: resp?.data,
       }
+      console.log(resp, resp.data, 'POST resp from Axios.js')
       if ([200, 201].includes(data.status)) return resolve(data)
       throw new Error(resp)
     } catch (error) {

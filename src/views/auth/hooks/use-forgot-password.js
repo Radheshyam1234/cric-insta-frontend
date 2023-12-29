@@ -1,19 +1,22 @@
-import { handleApiGet, handleApiPost } from 'api/Axios'
+import { handleApiPost } from 'api/Axios'
 import React, { useState } from 'react'
 
 const UseForgotPassword = () => {
   const [showOtpScreen, setShowotpScreen] = useState(false)
+  const [showResetPasswordScreen, setShowResetPasswordScreen] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [email, setEmail] = useState('')
   const [errorState, setErrorState] = useState({
     email: '',
   })
 
-  handleApiPost('/auth/sendotp', { email: 'rdk7352669258@gmail.com' }).then((data) => {
-    console.log(data)
-  })
-
   const handleEmailChange = (e) => {
     setEmail(e?.target?.value)
+  }
+
+  const handleShowResetPasswordScreen = () => {
+    setShowotpScreen(!showOtpScreen)
+    setShowResetPasswordScreen(!showResetPasswordScreen)
   }
 
   const verifyInput = () => {
@@ -29,15 +32,29 @@ const UseForgotPassword = () => {
     return isValid
   }
 
-  const handleSendOtpClick = () => {
-    if (verifyInput()) setShowotpScreen(true)
+  const handleSendOtpClick = async () => {
+    if (verifyInput()) {
+      setLoading(true)
+      try {
+        const res = await handleApiPost('/auth/sendotp', { email })
+        setShowotpScreen(true)
+      } catch (error) {
+        console.log(error)
+      } finally {
+        setLoading(false)
+      }
+    }
   }
 
   return {
     handleEmailChange,
+    email,
     errorState,
     showOtpScreen,
     handleSendOtpClick,
+    loading,
+    showResetPasswordScreen,
+    handleShowResetPasswordScreen,
   }
 }
 

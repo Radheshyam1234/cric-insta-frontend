@@ -3,7 +3,7 @@ import useCountdownTimer from 'hooks/use-countdown-timer'
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 
-const UseOtpVerification = ({ requestType, signUpInfo }) => {
+const UseOtpVerification = ({ requestType, userInfo, callbackFun }) => {
   const router = useRouter()
   const [otp, setOtp] = useState('')
   const [loading, setLoading] = useState(false)
@@ -22,8 +22,9 @@ const UseOtpVerification = ({ requestType, signUpInfo }) => {
   const handleVerifyOtp = async () => {
     setLoading(true)
     try {
-      const res = await handleApiPost('/auth/verifyotp', { otp, signUpInfo }, { requestType })
-      router.push('/')
+      const res = await handleApiPost('/auth/verifyotp', { otp, userInfo }, { requestType })
+      if (callbackFun && typeof callbackFun === 'function') callbackFun() // to do sth after successful otp-verification
+      else router.push('/')
     } catch (error) {
       console.log(error, '27')
     } finally {

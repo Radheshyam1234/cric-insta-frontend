@@ -2,9 +2,6 @@ import { handleApiPost } from 'api/Axios'
 import React, { useState } from 'react'
 
 const UseSignUpForm = () => {
-  const [email, setEmail] = useState('')
-  const [userName, setUserName] = useState('')
-  const [password, setPassword] = useState('')
   const [signUpInfo, setSignUpInfo] = useState({
     email: '',
     userName: '',
