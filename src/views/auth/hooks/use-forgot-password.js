@@ -36,7 +36,7 @@ const UseForgotPassword = () => {
     if (verifyInput()) {
       setLoading(true)
       try {
-        const res = await handleApiPost('/auth/sendotp', { email })
+        const res = await handleApiPost('/auth/sendotp', { email }, { requestType: 'reset password' })
         setShowotpScreen(true)
       } catch (error) {
         console.log(error)

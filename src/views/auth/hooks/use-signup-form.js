@@ -50,7 +50,7 @@ const UseSignUpForm = () => {
     if (verifySignUpCredential()) {
       setLoading(true)
       try {
-        const res = await handleApiPost('/auth/sendotp', { email: signUpInfo.email })
+        const res = await handleApiPost('/auth/sendotp', { email: signUpInfo.email }, { requestType: 'create user' })
         setShowotpScreen(true)
       } catch (error) {
         console.log(error)
