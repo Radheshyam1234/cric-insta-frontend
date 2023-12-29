@@ -2,9 +2,6 @@ import { handleApiPost } from 'api/Axios'
 import React, { useState } from 'react'
 
 const UseSignUpForm = () => {
-  const [email, setEmail] = useState('')
-  const [userName, setUserName] = useState('')
-  const [password, setPassword] = useState('')
   const [signUpInfo, setSignUpInfo] = useState({
     email: '',
     userName: '',
@@ -53,7 +50,7 @@ const UseSignUpForm = () => {
     if (verifySignUpCredential()) {
       setLoading(true)
       try {
-        const res = await handleApiPost('/auth/sendotp', { email: signUpInfo.email })
+        const res = await handleApiPost('/auth/sendotp', { email: signUpInfo.email }, { requestType: 'create user' })
         setShowotpScreen(true)
       } catch (error) {
         console.log(error)

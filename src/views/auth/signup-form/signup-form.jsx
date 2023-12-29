@@ -1,7 +1,7 @@
 import Button from 'components/button/button'
 import PasswordInput from 'components/input/password-input'
 import TextInput from 'components/input/text-input'
-import UseSignUpForm from 'views/hooks/use-signup-form'
+import UseSignUpForm from 'views/auth/hooks/use-signup-form'
 import EnterOtp from '../enter-otp/enter-otp'
 
 const SignUpForm = () => {
@@ -9,7 +9,7 @@ const SignUpForm = () => {
   return (
     <>
       {showOtpScreen ? (
-        <EnterOtp requestType={'create user'} signUpInfo={signUpInfo} />
+        <EnterOtp requestType={'create user'} userInfo={signUpInfo} />
       ) : (
         <div className='p-5 lg:p-8 bg-primary-500 rounded-[2px] flex flex-col gap-4 w-[340px] sm:w-[440px]'>
           <p className='text-center font-bold text-success-500 text-lg'>Social media for cricket fans </p>

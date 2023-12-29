@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic'
 import Button from 'components/button/button'
 import PasswordInput from 'components/input/password-input'
 import TextInput from 'components/input/text-input'
-import UseLoginForm from 'views/hooks/use-login-form'
+import UseLoginForm from 'views/auth/hooks/use-login-form'
 
 const LoginForm = () => {
   const { loading, handleEmailChange, handlePasswordChange, handleLoginClick, errorState } = UseLoginForm()
