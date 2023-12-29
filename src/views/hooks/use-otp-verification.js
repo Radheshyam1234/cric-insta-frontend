@@ -1,8 +1,10 @@
 import { handleApiPost } from 'api/Axios'
 import useCountdownTimer from 'hooks/use-countdown-timer'
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 
 const UseOtpVerification = ({ requestType, signUpInfo }) => {
+  const router = useRouter()
   const [otp, setOtp] = useState('')
   const [loading, setLoading] = useState(false)
   const [disableResend, setDisableResend] = useState(true)
@@ -21,6 +23,7 @@ const UseOtpVerification = ({ requestType, signUpInfo }) => {
     setLoading(true)
     try {
       const res = await handleApiPost('/auth/verifyotp', { otp, signUpInfo }, { requestType })
+      router.push('/')
     } catch (error) {
       console.log(error, '27')
     } finally {

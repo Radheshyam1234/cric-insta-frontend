@@ -2,8 +2,8 @@ import Button from 'components/button/button'
 import ReactOtpInput from 'react-otp-input'
 import UseOtpVerification from 'views/hooks/use-otp-verification'
 
-const EnterOtp = ({ requestType, signUpInfo }) => {
-  const { otp, loading, handleSetOtp, handleVerifyOtp, disableResend, remainingTime } = UseOtpVerification({ requestType, signUpInfo })
+const EnterOtp = ({ requestType, signUpInfo, redirectState }) => {
+  const { otp, loading, handleSetOtp, handleVerifyOtp, disableResend, remainingTime } = UseOtpVerification({ requestType, signUpInfo, redirectState })
 
   return (
     <div className='p-5 lg:p-8 bg-primary-500 rounded-[2px] flex flex-col gap-4 w-[340px] sm:w-[440px]'>
