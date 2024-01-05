@@ -26,7 +26,6 @@ const UseOtpVerification = ({ requestType, userInfo, callbackFun }) => {
       if (callbackFun && typeof callbackFun === 'function') callbackFun() // to do sth after successful otp-verification
       else router.push('/')
     } catch (error) {
-      console.log(error, '27')
     } finally {
       setLoading(false)
     }

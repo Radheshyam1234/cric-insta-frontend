@@ -1,8 +1,8 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_ROOT_API_URL,
-  // baseURL: 'http://localhost:8080',
+  // baseURL: process.env.NEXT_PUBLIC_ROOT_API_URL,
+  baseURL: 'http://localhost:8080',
 })
 
 axiosInstance.defaults.headers.post['Content-Type'] = 'application/json'
