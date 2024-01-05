@@ -1,11 +1,13 @@
 import { handleApiPost } from 'api/Axios'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { fetchUserLocation } from 'utils/fetchUserLocation'
 
 const UseSignUpForm = () => {
   const [signUpInfo, setSignUpInfo] = useState({
     email: '',
     userName: '',
     password: '',
+    location: null,
   })
   const [showOtpScreen, setShowotpScreen] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -14,6 +16,19 @@ const UseSignUpForm = () => {
     userName: '',
     password: '',
   })
+
+  //Fetching user location immediately
+  useEffect(() => {
+    ;(() => {
+      fetchUserLocation()
+        .then((location) => {
+          setSignUpInfo((prev) => ({ ...prev, location: location }))
+        })
+        .catch((error) => {
+          setSignUpInfo((prev) => ({ ...prev, location: null }))
+        })
+    })()
+  }, [])
 
   const handleSignUpInfo = (type, val) => {
     setSignUpInfo((prev) => ({ ...prev, [type]: val }))
